@@ -20,6 +20,7 @@ import org.bukkit.block.sign.Side;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.List;
@@ -41,7 +42,7 @@ public class Commandeditsign extends EssentialsCommand {
         }
         final ModifiableSign sign = wrapSign((Sign) target.getState(), user);
         try {
-            if (args[0].equalsIgnoreCase("set") && args.length > 2) {
+            if (args[0].equalsIgnoreCase("definir") && args.length > 2) {
                 final String[] existingLines = sign.getLines();
                 final int line = Integer.parseInt(args[1]) - 1;
                 final String text = FormatUtil.formatString(user, "essentials.editsign", getFinalArg(args, 2)).trim();
@@ -54,9 +55,9 @@ public class Commandeditsign extends EssentialsCommand {
                 }
 
                 user.sendTl("editsignCommandSetSuccess", line + 1, text);
-            } else if (args[0].equalsIgnoreCase("clear")) {
+            } else if (args[0].equalsIgnoreCase("limpar")) {
+                final String[] existingLines = sign.getLines();
                 if (args.length == 1) {
-                    final String[] existingLines = sign.getLines();
                     for (int i = 0; i < 4; i++) { // A whole one line of line savings!
                         existingLines[i] = "";
                     }
@@ -67,7 +68,6 @@ public class Commandeditsign extends EssentialsCommand {
 
                     user.sendTl("editsignCommandClear");
                 } else {
-                    final String[] existingLines = sign.getLines();
                     final int line = Integer.parseInt(args[1]) - 1;
                     existingLines[line] = "";
 
@@ -77,7 +77,7 @@ public class Commandeditsign extends EssentialsCommand {
 
                     user.sendTl("editsignCommandClearLine", line + 1);
                 }
-            } else if (args[0].equalsIgnoreCase("copy")) {
+            } else if (args[0].equalsIgnoreCase("copiar")) {
                 if (callSignEvent(sign, user.getBase(), sign.getLines())) {
                     return;
                 }
@@ -95,7 +95,7 @@ public class Commandeditsign extends EssentialsCommand {
                     user.sendTl("editsignCopyLine", line + 1, commandLabel);
                 }
 
-            } else if (args[0].equalsIgnoreCase("paste")) {
+            } else if (args[0].equalsIgnoreCase("colar")) {
                 final int line = args.length == 1 ? -1 : Integer.parseInt(args[1]) - 1;
 
                 final String[] existingLines = sign.getLines();
@@ -148,14 +148,14 @@ public class Commandeditsign extends EssentialsCommand {
     @Override
     protected List<String> getTabCompleteOptions(final Server server, final User user, final String commandLabel, final String[] args) {
         if (args.length == 1) {
-            return Lists.newArrayList("set", "clear", "copy", "paste");
+            return Lists.newArrayList("definir", "limpar", "copiar", "colar");
         } else if (args.length == 2) {
             return Lists.newArrayList("1", "2", "3", "4");
-        } else if (args.length == 3 && args[0].equalsIgnoreCase("set") && NumberUtil.isPositiveInt(args[1])) {
+        } else if (args.length == 3 && args[0].equalsIgnoreCase("definir") && NumberUtil.isPositiveInt(args[1])) {
             final int line = Integer.parseInt(args[1]);
             final Block target = user.getTargetBlock(5);
-            if (target.getState() instanceof Sign && line <= 4) {
-                final ModifiableSign sign = wrapSign((Sign) target.getState(), user);
+            if (target.getState() instanceof Sign targetSign && line <= 4) {
+                final ModifiableSign sign = wrapSign(targetSign, user);
                 return Lists.newArrayList(FormatUtil.unformatString(user, "essentials.editsign", sign.getLine(line - 1)));
             }
             return Collections.emptyList();
@@ -167,20 +167,7 @@ public class Commandeditsign extends EssentialsCommand {
     private ModifiableSign wrapSign(final Sign sign, final User user) {
         if (VersionUtil.getServerBukkitVersion().isHigherThanOrEqualTo(VersionUtil.v1_20_1_R01)) {
             final Vector eyeLocLessSign = user.getBase().getEyeLocation().toVector().subtract(sign.getLocation().add(.5, .5, .5).toVector());
-            final BlockData signBlockData = sign.getBlockData();
-
-            final BlockFace signDirection;
-            if (signBlockData instanceof org.bukkit.block.data.type.Sign) {
-                signDirection = ((org.bukkit.block.data.type.Sign) signBlockData).getRotation();
-            } else if (signBlockData instanceof WallSign) {
-                signDirection = ((WallSign) signBlockData).getFacing();
-            } else if (signBlockData instanceof HangingSign) {
-                signDirection = ((HangingSign) signBlockData).getRotation();
-            } else if (signBlockData instanceof WallHangingSign) {
-                signDirection = ((WallHangingSign) signBlockData).getFacing();
-            } else {
-                throw new IllegalStateException("Unknown block data for sign: " + signBlockData.getClass());
-            }
+            final BlockFace signDirection = getBlockFace(sign);
 
             final Side side = eyeLocLessSign.dot(signDirection.getDirection()) > 0 ? Side.FRONT : Side.BACK;
 
@@ -237,6 +224,24 @@ public class Commandeditsign extends EssentialsCommand {
                 return false;
             }
         };
+    }
+
+    private static @NotNull BlockFace getBlockFace(Sign sign) {
+        final BlockData signBlockData = sign.getBlockData();
+
+        final BlockFace signDirection;
+        if (signBlockData instanceof org.bukkit.block.data.type.Sign bukkitSign) {
+            signDirection = bukkitSign.getRotation();
+        } else if (signBlockData instanceof WallSign wallSign) {
+            signDirection = wallSign.getFacing();
+        } else if (signBlockData instanceof HangingSign hangingSign) {
+            signDirection = hangingSign.getRotation();
+        } else if (signBlockData instanceof WallHangingSign wallHangingSign) {
+            signDirection = wallHangingSign.getFacing();
+        } else {
+            throw new IllegalStateException("Unknown block data for sign: " + signBlockData.getClass());
+        }
+        return signDirection;
     }
 
     private abstract static class ModifiableSign {
