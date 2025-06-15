@@ -39,18 +39,24 @@ public class Commandkit extends EssentialsCommand {
 
     @Override
     public void run(final Server server, final CommandSource sender, final String commandLabel, final String @NotNull [] args) throws Exception {
+        boolean silent = false;
         if (args.length < 2) {
             final String kitList = ess.getKits().listKits(ess, null);
             sender.sendTl(!kitList.isEmpty() ? "kits" : "noKits", AdventureUtil.parsed(kitList));
             throw new NoChargeException();
         } else {
             final User userTo = getPlayer(server, args, 1, true, false);
+            if (args.length >= 3 && args[2].equalsIgnoreCase("-s")) {
+                silent = true;
+            }
 
             for (final String kitName : args[0].toLowerCase(Locale.ENGLISH).split(",")) {
                 new Kit(kitName, ess).expandItems(userTo);
 
                 sender.sendTl("kitGiveTo", kitName, userTo.getDisplayName());
-                userTo.sendTl("kitReceive", kitName);
+                if (!silent) {
+                    sender.sendTl("kitReceive", kitName);
+                }
             }
         }
     }
@@ -91,7 +97,6 @@ public class Commandkit extends EssentialsCommand {
                 if (!silent) {
                     userTo.sendTl("kitReceive", kit.getName());
                 }
-
             } catch (final NoChargeException ex) {
                 if (ess.getSettings().isDebug()) {
                     ess.getLogger().log(Level.INFO, "Soft kit error, abort spawning " + kit.getName(), ex);
