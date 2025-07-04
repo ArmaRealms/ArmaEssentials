@@ -514,7 +514,7 @@ commands:
     usage: /<command> <storm/sun> [duration]
     aliases: [rain, storm, sun]
   whois:
-    description: Determine the username behind a nickname.
+    description: Determine basic information about the specified player.
     usage: /<command> <nickname>
   workbench:
     description: Opens up a workbench.
