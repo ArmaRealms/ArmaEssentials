@@ -45,7 +45,6 @@ public class Commandeditsign extends EssentialsCommand {
                 final String[] existingLines = sign.getLines();
                 final int line = Integer.parseInt(args[1]) - 1;
                 final String text = FormatUtil.formatString(user, "essentials.editsign", getFinalArg(args, 2)).trim();
-                //noinspection deprecation
                 if (ChatColor.stripColor(text).length() > 15 && !user.isAuthorized("essentials.editsign.unlimited")) {
                     throw new TranslatableException("editsignCommandLimit");
                 }
@@ -130,10 +129,8 @@ public class Commandeditsign extends EssentialsCommand {
             if (sign.isWaxed() && !user.isAuthorized("essentials.editsign.waxed.exempt")) {
                 return true;
             }
-            // noinspection removal,UnstableApiUsage
             event = new SignChangeEvent(sign.getBlock(), user.getBase(), lines, sign.isFront() ? Side.FRONT : Side.BACK);
         } else {
-            // noinspection removal,UnstableApiUsage
             event = new SignChangeEvent(sign.getBlock(), user.getBase(), lines);
         }
 
@@ -181,19 +178,16 @@ public class Commandeditsign extends EssentialsCommand {
             return new ModifiableSign(sign) {
                 @Override
                 String[] getLines() {
-                    //noinspection deprecation
                     return sign.getSide(side).getLines();
                 }
 
                 @Override
                 String getLine(final int line) {
-                    //noinspection deprecation
                     return sign.getSide(side).getLine(line);
                 }
 
                 @Override
                 void setLine(final int line, final String text) {
-                    //noinspection deprecation
                     sign.getSide(side).setLine(line, text);
                 }
 
@@ -211,19 +205,16 @@ public class Commandeditsign extends EssentialsCommand {
         return new ModifiableSign(sign) {
             @Override
             String[] getLines() {
-                //noinspection deprecation
                 return sign.getLines();
             }
 
             @Override
             String getLine(final int line) {
-                //noinspection deprecation
                 return sign.getLine(line);
             }
 
             @Override
             void setLine(final int line, final String text) {
-                //noinspection deprecation
                 sign.setLine(line, text);
             }
 
