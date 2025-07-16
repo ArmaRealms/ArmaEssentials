@@ -45,6 +45,7 @@ public class Commandeditsign extends EssentialsCommand {
                 final String[] existingLines = sign.getLines();
                 final int line = Integer.parseInt(args[1]) - 1;
                 final String text = FormatUtil.formatString(user, "essentials.editsign", getFinalArg(args, 2)).trim();
+                //noinspection deprecation
                 if (ChatColor.stripColor(text).length() > 15 && !user.isAuthorized("essentials.editsign.unlimited")) {
                     throw new TranslatableException("editsignCommandLimit");
                 }
@@ -77,7 +78,7 @@ public class Commandeditsign extends EssentialsCommand {
                     user.sendTl("editsignCommandClearLine", line + 1);
                 }
             } else if (args[0].equalsIgnoreCase("copiar")) {
-                if (callSignEvent(sign, user.getBase(), sign.getLines())) {
+                if (callSignEvent(sign, user, sign.getLines())) {
                     return;
                 }
 
@@ -129,9 +130,10 @@ public class Commandeditsign extends EssentialsCommand {
             if (sign.isWaxed() && !user.isAuthorized("essentials.editsign.waxed.exempt")) {
                 return true;
             }
+            // noinspection removal,UnstableApiUsage
             event = new SignChangeEvent(sign.getBlock(), user.getBase(), lines, sign.isFront() ? Side.FRONT : Side.BACK);
         } else {
-            //noinspection deprecation
+            // noinspection removal,UnstableApiUsage
             event = new SignChangeEvent(sign.getBlock(), user.getBase(), lines);
         }
 
@@ -159,7 +161,7 @@ public class Commandeditsign extends EssentialsCommand {
         } else if (args.length == 3 && args[0].equalsIgnoreCase("definir") && NumberUtil.isPositiveInt(args[1])) {
             final int line = Integer.parseInt(args[1]);
             final Block target = user.getTargetBlock(5);
-            if (target.getState() instanceof Sign targetSign && line <= 4) {
+            if (target.getState() instanceof final Sign targetSign && line <= 4) {
                 final ModifiableSign sign = wrapSign(targetSign, user);
                 return Lists.newArrayList(FormatUtil.unformatString(user, "essentials.editsign", sign.getLine(line - 1)));
             }
@@ -179,16 +181,19 @@ public class Commandeditsign extends EssentialsCommand {
             return new ModifiableSign(sign) {
                 @Override
                 String[] getLines() {
+                    //noinspection deprecation
                     return sign.getSide(side).getLines();
                 }
 
                 @Override
-                String getLine(int line) {
+                String getLine(final int line) {
+                    //noinspection deprecation
                     return sign.getSide(side).getLine(line);
                 }
 
                 @Override
-                void setLine(int line, String text) {
+                void setLine(final int line, final String text) {
+                    //noinspection deprecation
                     sign.getSide(side).setLine(line, text);
                 }
 
@@ -206,16 +211,19 @@ public class Commandeditsign extends EssentialsCommand {
         return new ModifiableSign(sign) {
             @Override
             String[] getLines() {
+                //noinspection deprecation
                 return sign.getLines();
             }
 
             @Override
-            String getLine(int line) {
+            String getLine(final int line) {
+                //noinspection deprecation
                 return sign.getLine(line);
             }
 
             @Override
-            void setLine(int line, String text) {
+            void setLine(final int line, final String text) {
+                //noinspection deprecation
                 sign.setLine(line, text);
             }
 
@@ -231,17 +239,17 @@ public class Commandeditsign extends EssentialsCommand {
         };
     }
 
-    private static @NotNull BlockFace getBlockFace(Sign sign) {
+    private static @NotNull BlockFace getBlockFace(final Sign sign) {
         final BlockData signBlockData = sign.getBlockData();
 
         final BlockFace signDirection;
-        if (signBlockData instanceof org.bukkit.block.data.type.Sign bukkitSign) {
+        if (signBlockData instanceof final org.bukkit.block.data.type.Sign bukkitSign) {
             signDirection = bukkitSign.getRotation();
-        } else if (signBlockData instanceof WallSign wallSign) {
+        } else if (signBlockData instanceof final WallSign wallSign) {
             signDirection = wallSign.getFacing();
-        } else if (signBlockData instanceof HangingSign hangingSign) {
+        } else if (signBlockData instanceof final HangingSign hangingSign) {
             signDirection = hangingSign.getRotation();
-        } else if (signBlockData instanceof WallHangingSign wallHangingSign) {
+        } else if (signBlockData instanceof final WallHangingSign wallHangingSign) {
             signDirection = wallHangingSign.getFacing();
         } else {
             throw new IllegalStateException("Unknown block data for sign: " + signBlockData.getClass());
