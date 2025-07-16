@@ -158,8 +158,8 @@ public class Commandeditsign extends EssentialsCommand {
         } else if (args.length == 3 && args[0].equalsIgnoreCase("definir") && NumberUtil.isPositiveInt(args[1])) {
             final int line = Integer.parseInt(args[1]);
             final Block target = user.getTargetBlock(5);
-            if (target.getState() instanceof final Sign targetSign && line <= 4) {
-                final ModifiableSign sign = wrapSign(targetSign, user);
+            if (target.getState() instanceof Sign && line <= 4) {
+                final ModifiableSign sign = wrapSign((Sign) target.getState(), user);
                 return Lists.newArrayList(FormatUtil.unformatString(user, "essentials.editsign", sign.getLine(line - 1)));
             }
             return Collections.emptyList();
