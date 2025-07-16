@@ -40,7 +40,7 @@ public class Commandeditsign extends EssentialsCommand {
         }
         final ModifiableSign sign = wrapSign((Sign) target.getState(), user);
         try {
-            if (args[0].equalsIgnoreCase("set") && args.length > 2) {
+            if (args[0].equalsIgnoreCase("definir") && args.length > 2) {
                 final String[] existingLines = sign.getLines();
                 final int line = Integer.parseInt(args[1]) - 1;
                 final String text = FormatUtil.formatString(user, "essentials.editsign", getFinalArg(args, 2)).trim();
@@ -53,7 +53,7 @@ public class Commandeditsign extends EssentialsCommand {
                 }
 
                 user.sendTl("editsignCommandSetSuccess", line + 1, text);
-            } else if (args[0].equalsIgnoreCase("clear")) {
+            } else if (args[0].equalsIgnoreCase("limpar")) {
                 if (args.length == 1) {
                     final String[] existingLines = sign.getLines();
                     for (int i = 0; i < 4; i++) { // A whole one line of line savings!
@@ -76,9 +76,11 @@ public class Commandeditsign extends EssentialsCommand {
 
                     user.sendTl("editsignCommandClearLine", line + 1);
                 }
-            } else if (args[0].equalsIgnoreCase("copy")) {
+            } else if (args[0].equalsIgnoreCase("copiar")) {
                 final int line = args.length == 1 ? -1 : Integer.parseInt(args[1]) - 1;
-
+                if (callSignEvent(sign, user, sign.getLines())) {
+                    return;
+                }
                 if (line == -1) {
                     for (int i = 0; i < 4; i++) {
                         // We use unformat here to prevent players from copying signs with colors that they do not have permission to use.
@@ -91,7 +93,7 @@ public class Commandeditsign extends EssentialsCommand {
                     user.sendTl("editsignCopyLine", line + 1, commandLabel);
                 }
 
-            } else if (args[0].equalsIgnoreCase("paste")) {
+            } else if (args[0].equalsIgnoreCase("colar")) {
                 final int line = args.length == 1 ? -1 : Integer.parseInt(args[1]) - 1;
 
                 final String[] existingLines = sign.getLines();
@@ -148,10 +150,10 @@ public class Commandeditsign extends EssentialsCommand {
     @Override
     protected List<String> getTabCompleteOptions(final Server server, final User user, final String commandLabel, final String[] args) {
         if (args.length == 1) {
-            return Lists.newArrayList("set", "clear", "copy", "paste");
+            return Lists.newArrayList("definir", "limpar", "copiar", "colar");
         } else if (args.length == 2) {
             return Lists.newArrayList("1", "2", "3", "4");
-        } else if (args.length == 3 && args[0].equalsIgnoreCase("set") && NumberUtil.isPositiveInt(args[1])) {
+        } else if (args.length == 3 && args[0].equalsIgnoreCase("definir") && NumberUtil.isPositiveInt(args[1])) {
             final int line = Integer.parseInt(args[1]);
             final Block target = user.getTargetBlock(5);
             if (target.getState() instanceof Sign && line <= 4) {
