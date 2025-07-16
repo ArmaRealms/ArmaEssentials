@@ -22,7 +22,6 @@ public class LocalChatEvent extends ChatEvent implements Cancellable {
 
     /**
      * Returns local chat radius used to calculate recipients of this message.
-     * <p>
      * <p>This is not a radius between players: for that use {@link ChatEvent#getRecipients()} and calculate distance
      * to player who sent the message ({@link ChatEvent#getPlayer()}).
      * @return Non-squared local chat radius.
