@@ -304,6 +304,7 @@ commands:
   playtime:
     description: Shows a player's time played in game
     usage: /<command> [player]
+    aliases: [eplaytime]
 #  potion:
 #    description: Adds custom potion effects to a potion.
 #    usage: /<command> <clear|apply|effect:<effect> power:<power> duration:<duration>>
@@ -311,10 +312,14 @@ commands:
 #    description: Assigns a command to the item in hand.
 #    usage: /<command> [l:|a:|r:|c:|d:][command] [arguments] - {player} can be replaced by name of a clicked player.
 #    aliases: [pt]
-  powertooltoggle:
-    description: Enables or disables all current powertools.
-    usage: /<command>
-    aliases: [pttoggle]
+#  powertoollist:
+#    description: Lists all current powertools.
+#    usage: /<command>
+#    aliases: [epowertoollist,ptlist,eptlist]
+#  powertooltoggle:
+#    description: Enables or disables all current powertools.
+#    usage: /<command>
+#    aliases: [pttoggle]
   ptime:
     description: Adjust player's client time. Add @ prefix to fix.
     usage: /<command> [list|reset|day|night|dawn|17:30|4pm|4000ticks] [player|*]
@@ -879,6 +884,8 @@ permissions:
     description: Allows the user to keep their exp on death, instead of dropping it.
   essentials.joinfullserver:
     description: Allows the to join the server even if it is full
+  essentials.whitelist.bypass:
+    description: Allows a player to join the server even if they are not whitelisted.
   essentials.kick:
     description: Allows access to the /kick command
   essentials.kick.exempt:
