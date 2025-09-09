@@ -27,7 +27,8 @@ public class Commandheal extends EssentialsLoopCommand {
             return;
         }
 
-        updatePlayer(server, user.getSource(), user, args);
+        healPlayer(user.getBase());
+        user.sendTl("heal");
     }
 
     @Override
@@ -42,8 +43,15 @@ public class Commandheal extends EssentialsLoopCommand {
     @Override
     protected void updatePlayer(final Server server, final CommandSource sender, final User user, final String[] args) throws PlayerExemptException {
         try {
-            final Player player = user.getBase();
+            healPlayer(user.getBase());
+            sender.sendTl("healOther", user.getDisplayName());
+        } catch (final PlayerExemptException e) {
+            //Handle Quietly
+        }
+    }
 
+    private void healPlayer(final Player player) throws PlayerExemptException {
+        try {
             if (player.getHealth() == 0) {
                 throw new PlayerExemptException("healDead");
             }
@@ -64,13 +72,11 @@ public class Commandheal extends EssentialsLoopCommand {
             player.setFoodLevel(20);
             player.setFireTicks(0);
             player.setRemainingAir(player.getMaximumAir());
-            user.sendTl("heal");
             if (ess.getSettings().isRemovingEffectsOnHeal()) {
                 for (final PotionEffect effect : player.getActivePotionEffects()) {
                     player.removePotionEffect(effect.getType());
                 }
             }
-            sender.sendTl("healOther", user.getDisplayName());
         } catch (final QuietAbortException e) {
             //Handle Quietly
         }
