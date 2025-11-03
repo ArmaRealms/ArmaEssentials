@@ -35,10 +35,10 @@ public class Commandeditsign extends EssentialsCommand {
         }
 
         final Block target = user.getTargetBlock(5); //5 is a good number
-        if (!(target.getState() instanceof final Sign targetSign)) {
+        if (!(target.getState() instanceof Sign)) {
             throw new TranslatableException("editsignCommandTarget");
         }
-        final ModifiableSign sign = wrapSign(targetSign, user);
+        final ModifiableSign sign = wrapSign((Sign) target.getState(), user);
         try {
             if (args[0].equalsIgnoreCase("definir") && args.length > 2) {
                 final String[] existingLines = sign.getLines();
