@@ -15,7 +15,7 @@ public class Commandkitreset extends EssentialsCommand {
     }
 
     @Override
-    protected void run(Server server, User user, String commandLabel, String[] args) throws Exception {
+    protected void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception {
         if (args.length < 1) {
             throw new NotEnoughArgumentsException();
         }
@@ -27,7 +27,7 @@ public class Commandkitreset extends EssentialsCommand {
 
         User target = user;
         if (args.length > 1 && user.isAuthorized("essentials.kitreset.others")) {
-            target = getPlayer(server, user, args, 1);
+            target = getPlayer(server, user, args, 1, true);
         }
 
         target.setKitTimestamp(kitName, 0);
@@ -39,7 +39,7 @@ public class Commandkitreset extends EssentialsCommand {
     }
 
     @Override
-    protected void run(Server server, CommandSource sender, String commandLabel, String[] args) throws Exception {
+    protected void run(final Server server, final CommandSource sender, final String commandLabel, final String[] args) throws Exception {
         if (args.length < 2) {
             throw new NotEnoughArgumentsException();
         }
@@ -55,7 +55,7 @@ public class Commandkitreset extends EssentialsCommand {
     }
 
     @Override
-    protected List<String> getTabCompleteOptions(Server server, CommandSource sender, String commandLabel, String[] args) {
+    protected List<String> getTabCompleteOptions(final Server server, final CommandSource sender, final String commandLabel, final String[] args) {
         if (args.length == 1) {
             return new ArrayList<>(ess.getKits().getKitKeys());
         } else if (args.length == 2 && sender.isAuthorized("essentials.kitreset.others")) {
