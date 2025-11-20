@@ -54,8 +54,8 @@ public class Commandeditsign extends EssentialsCommand {
 
                 user.sendTl("editsignCommandSetSuccess", line + 1, text);
             } else if (args[0].equalsIgnoreCase("limpar")) {
+                final String[] existingLines = sign.getLines();
                 if (args.length == 1) {
-                    final String[] existingLines = sign.getLines();
                     for (int i = 0; i < 4; i++) { // A whole one line of line savings!
                         existingLines[i] = "";
                     }
@@ -66,7 +66,6 @@ public class Commandeditsign extends EssentialsCommand {
 
                     user.sendTl("editsignCommandClear");
                 } else {
-                    final String[] existingLines = sign.getLines();
                     final int line = Integer.parseInt(args[1]) - 1;
                     existingLines[line] = "";
 
