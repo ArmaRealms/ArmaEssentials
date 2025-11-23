@@ -265,6 +265,7 @@ commands:
   msg:
     description: Sends a private message to the specified player.
     usage: /<command> <to> <message>
+    aliases: [tell, whisper, w, dm, m, pm]
   msgtoggle:
     description: Blocks receiving all private messages.
     usage: /<command> [player] [on|off]
