@@ -190,7 +190,7 @@ commands:
   ignore:
     description: Ignore or unignore other players.
     usage: /<command> <player>
-    aliases: [tpignore, payignore, emailignore]
+    aliases: [tpignore, payignore, emailignore, msgignore]
   info:
     description: Shows information set by the server owner.
     usage: /<command> [chapter] [page]
@@ -262,12 +262,12 @@ commands:
   motd:
     description: Views the Message Of The Day.
     usage: /<command> [chapter] [page]
-#  msg:
-#    description: Sends a private message to the specified player.
-#    usage: /<command> <to> <message>
-#  msgtoggle:
-#    description: Blocks receiving all private messages.
-#    usage: /<command> [player] [on|off]
+  msg:
+    description: Sends a private message to the specified player.
+    usage: /<command> <to> <message>
+  msgtoggle:
+    description: Blocks receiving all private messages.
+    usage: /<command> [player] [on|off]
 #  mute:
 #    description: Mutes or unmutes a player.
 #    usage: /<command> <player> [datediff] [reason]
@@ -328,12 +328,14 @@ commands:
     description: Adjust a player's weather
     usage: /<command> [list|reset|storm|sun|clear] [player|*]
     aliases: [playerweather]
-#  r:
-#    description: Quickly reply to the last player to message you.
-#    usage: /<command> <message>
-#  rtoggle:
-#    description: Change whether the recipient of the reply is last recipient or last sender
-#    usage: /<command> [player] [on|off]
+  r:
+    description: Quickly reply to the last player to message you.
+    usage: /<command> <message>
+    aliases: [reply]
+  rtoggle:
+    description: Change whether the recipient of the reply is last recipient or last sender
+    usage: /<command> [player] [on|off]
+    aliases: [replytoggle]
 #  realname:
 #    description: Displays the username of a user based on nick.
 #    usage: /<command> <nickname>
