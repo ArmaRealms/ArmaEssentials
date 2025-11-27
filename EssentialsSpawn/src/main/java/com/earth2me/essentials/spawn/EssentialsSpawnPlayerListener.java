@@ -66,13 +66,15 @@ class EssentialsSpawnPlayerListener implements Listener {
                 event.setRespawnLocation(home);
                 return;
             }
-        }
-        if (tryRandomTeleport(user, ess.getSettings().getRandomRespawnLocation())) {
-            return;
-        }
-        final Location spawn = spawns.getSpawn(user.getGroup());
-        if (spawn != null) {
-            event.setRespawnLocation(spawn);
+
+            if (tryRandomTeleport(user, ess.getSettings().getRandomRespawnLocation())) {
+                return;
+            }
+
+            final Location spawn = spawns.getSpawn(user.getGroup());
+            if (spawn != null) {
+                event.setRespawnLocation(spawn);
+            }
         }
     }
 
