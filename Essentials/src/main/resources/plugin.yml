@@ -11,9 +11,9 @@ commands:
   afk:
     description: Marks you as away-from-keyboard.
     usage: /<command> [player/message...]
-#  antioch:
-#    description: 'A little surprise for operators.'
-#    usage: /<command> [message]
+  antioch:
+    description: 'A little surprise for operators.'
+    usage: /<command> [message]
   anvil:
     description: Opens up an Anvil.
     usage: /<command>
@@ -22,9 +22,9 @@ commands:
     description: Teleports you to your location prior to tp/spawn/warp.
     usage: /<command> [player]
     aliases: [voltar]
-#  backup:
-#    description: Runs the backup if configured.
-#    usage: /<command>
+  backup:
+    description: Runs the backup if configured.
+    usage: /<command>
   balance:
     description: States the current balance of a player.
     usage: /<command> [player]
@@ -33,38 +33,38 @@ commands:
     description: Gets the top balance values.
     usage: /<command> [page]
     aliases: [topsaldo]
-#  ban:
-#    description: Bans a player.
-#    usage: /<command> <player> [reason]
-#  banip:
-#    description: Bans an IP address.
-#    usage: /<command> <address> [reason]
-#  beezooka:
-#    description: Throw an exploding bee at your opponent.
-#    usage: /<command>
+  ban:
+    description: Bans a player.
+    usage: /<command> <player> [reason]
+  banip:
+    description: Bans an IP address.
+    usage: /<command> <address> [reason]
+  beezooka:
+    description: Throw an exploding bee at your opponent.
+    usage: /<command>
   book:
     description: Allows reopening and editing of sealed books.
     usage: /<command> [title|author [name]]
   bottom:
     description: Teleport to the lowest block at your current position.
     usage: /<command>
-#  break:
-#    description: Breaks the block you are looking at.
-#    usage: /<command>
-#  broadcast:
-#    description: Broadcasts a message to the entire server.
-#    usage: /<command> <msg>
-#    aliases: [bc, all]
-#  broadcastworld:
-#    description: Broadcasts a message to a world.
-#    usage: /<command> <world> <msg>
-#    aliases: [bcw, allw]
-#  bigtree:
-#    description: Spawn a big tree where you are looking.
-#    usage: /<command> <tree|redwood|jungle|darkoak>
-#  burn:
-#    description: Set a player on fire.
-#    usage: /<command> <player> <seconds>
+  break:
+    description: Breaks the block you are looking at.
+    usage: /<command>
+  broadcast:
+    description: Broadcasts a message to the entire server.
+    usage: /<command> <msg>
+    aliases: [bc, all]
+  broadcastworld:
+    description: Broadcasts a message to a world.
+    usage: /<command> <world> <msg>
+    aliases: [bcw, allw]
+  bigtree:
+    description: Spawn a big tree where you are looking.
+    usage: /<command> <tree|redwood|jungle|darkoak>
+  burn:
+    description: Set a player on fire.
+    usage: /<command> <player> <seconds>
   cartographytable:
     description: Opens up a cartography table.
     usage: /<command>
@@ -93,9 +93,9 @@ commands:
     description: Removes a home.
     usage: /<command> <nome>
     aliases: [homedel]
-#  deljail:
-#    description: Removes a jail.
-#    usage: /<command> <jailname>
+  deljail:
+    description: Removes a jail.
+    usage: /<command> <jailname>
   delkit:
     description: Deletes the specified kit.
     usage: /<command> <kit>
@@ -148,10 +148,10 @@ commands:
     description: Change player gamemode.
     usage: /<command> <survival|creative|adventure|spectator> [player]
     aliases: [gma, gmc, gms, gmsp]
-#  gc:
-#    description: Reports memory, uptime and tick info.
-#    usage: /<command>
-#    aliases: [lag]
+  gc:
+    description: Reports memory, uptime and tick info.
+    usage: /<command>
+    aliases: [lag]
   getpos:
     description: Get your current coordinates or those of a player.
     usage: /<command> [player]
@@ -174,12 +174,12 @@ commands:
     description: Heals you or the given player.
     usage: /<command> [player]
     aliases: [curar]
-#  help:
-#    description: Views a list of available commands.
-#    usage: /<command> [search term] [page]
-#  helpop:
-#    description: Message online admins.
-#    usage: /<command> <message>
+  help:
+    description: Views a list of available commands.
+    usage: /<command> [search term] [page]
+  helpop:
+    description: Message online admins.
+    usage: /<command> <message>
   home:
     description: Teleport to your home.
     usage: /<command> [nome]
@@ -202,9 +202,9 @@ commands:
     description: Spawn an item.
     usage: /<command> <item|numeric> [amount [itemmeta...]]
     aliases: [i]
-#  itemdb:
-#    description: Searches for an item.
-#    usage: /<command> <item>
+  itemdb:
+    description: Searches for an item.
+    usage: /<command> <item>
   itemlore:
     description: Edit the lore of an item.
     usage: /<command> <add/set/clear> [text/line] [text]
@@ -213,18 +213,18 @@ commands:
     description: Names an item.
     usage: /<command> [name]
     aliases: [iname]
-#  jails:
-#    description: List all jails.
-#    usage: /<command>
+  jails:
+    description: List all jails.
+    usage: /<command>
   jump:
     description: Jumps to the nearest block in the line of sight.
     usage: /<command>
-#  kick:
-#    description: Kicks a specified player with a reason.
-#    usage: /<command> <player> [reason]
-#  kickall:
-#    description: Kicks all players off the server except the issuer.
-#    usage: /<command> [reason]
+  kick:
+    description: Kicks a specified player with a reason.
+    usage: /<command> <player> [reason]
+  kickall:
+    description: Kicks all players off the server except the issuer.
+    usage: /<command> [reason]
   kill:
     description: Kills specified player.
     usage: /<command> <player>
@@ -235,9 +235,9 @@ commands:
   kitreset:
     description: Resets the cooldown on the specified kit.
     usage: /<command> <kit> [player]
-#  kittycannon:
-#    description: Throw an exploding kitten at your opponent.
-#    usage: /<command>
+  kittycannon:
+    description: Throw an exploding kitten at your opponent.
+    usage: /<command>
   lightning:
     description: The power of Thor. Strike at cursor or player.
     usage: /<command> [player] [power]
@@ -253,9 +253,9 @@ commands:
     description: Manages inter-player, intra-server mail.
     usage: /<command> [read|clear|clear [number]|send [to] [message]|sendtemp [to] [expire time] [message]|sendall [message]]
     aliases: [email]
-#  me:
-#    description: Describes an action in the context of the player.
-#    usage: /<command> <description>
+  me:
+    description: Describes an action in the context of the player.
+    usage: /<command> <description>
   more:
     description: Fills the item stack in hand to specified amount, or to maximum size if none is specified.
     usage: /<command> [amount]
@@ -269,9 +269,9 @@ commands:
   msgtoggle:
     description: Blocks receiving all private messages.
     usage: /<command> [player] [on|off]
-#  mute:
-#    description: Mutes or unmutes a player.
-#    usage: /<command> <player> [datediff] [reason]
+  mute:
+    description: Mutes or unmutes a player.
+    usage: /<command> <player> [datediff] [reason]
   near:
     description: Lists the players near by or around a player.
     usage: /<command> [playername] [radius]
@@ -280,9 +280,9 @@ commands:
     description: Change your nickname or that of another player.
     usage: /<command> [player] <nickname|off>
     aliases: [nickname]
-#  nuke:
-#    description: May death rain upon them.
-#    usage: /<command> [player]
+  nuke:
+    description: May death rain upon them.
+    usage: /<command> [player]
   tpoffline:
     description: Teleport to a player's last known logout location
     usage: /<command> <player>
@@ -299,28 +299,28 @@ commands:
     description: Toggles whether you are prompted to confirm payments.
     usage: /<command>
     aliases: [payconfirmoff, payconfirmon, payconfirm, pagarconfirm]
-#  ping:
-#    description: Pong!
-#    usage: /<command>
+  ping:
+    description: Pong!
+    usage: /<command>
   playtime:
     description: Shows a player's time played in game
     usage: /<command> [player]
     aliases: [eplaytime]
-#  potion:
-#    description: Adds custom potion effects to a potion.
-#    usage: /<command> <clear|apply|effect:<effect> power:<power> duration:<duration>>
-#  powertool:
-#    description: Assigns a command to the item in hand.
-#    usage: /<command> [l:|a:|r:|c:|d:][command] [arguments] - {player} can be replaced by name of a clicked player.
-#    aliases: [pt]
-#  powertoollist:
-#    description: Lists all current powertools.
-#    usage: /<command>
-#    aliases: [epowertoollist,ptlist,eptlist]
-#  powertooltoggle:
-#    description: Enables or disables all current powertools.
-#    usage: /<command>
-#    aliases: [pttoggle]
+  potion:
+    description: Adds custom potion effects to a potion.
+    usage: /<command> <clear|apply|effect:<effect> power:<power> duration:<duration>>
+  powertool:
+    description: Assigns a command to the item in hand.
+    usage: /<command> [l:|a:|r:|c:|d:][command] [arguments] - {player} can be replaced by name of a clicked player.
+    aliases: [pt]
+  powertoollist:
+    description: Lists all current powertools.
+    usage: /<command>
+    aliases: [epowertoollist,ptlist,eptlist]
+  powertooltoggle:
+    description: Enables or disables all current powertools.
+    usage: /<command>
+    aliases: [pttoggle]
   ptime:
     description: Adjust player's client time. Add @ prefix to fix.
     usage: /<command> [list|reset|day|night|dawn|17:30|4pm|4000ticks] [player|*]
@@ -337,17 +337,17 @@ commands:
     description: Change whether the recipient of the reply is last recipient or last sender
     usage: /<command> [player] [on|off]
     aliases: [replytoggle]
-#  realname:
-#    description: Displays the username of a user based on nick.
-#    usage: /<command> <nickname>
-#  recipe:
-#    description: Displays how to craft items.
-#    usage: /<command> <item> [number]
-#    aliases: [formula]
-#  remove:
-#    description: Removes entities in your world.
-#    usage: /<command> <all|tamed|named|drops|arrows|boats|minecarts|xp|paintings|itemframes|endercrystals|monsters|animals|ambient|mobs|[mobType]> [radius|world]
-#    aliases: [killmob]
+  realname:
+    description: Displays the username of a user based on nick.
+    usage: /<command> <nickname>
+  recipe:
+    description: Displays how to craft items.
+    usage: /<command> <item> [number]
+    aliases: [formula]
+  remove:
+    description: Removes entities in your world.
+    usage: /<command> <all|tamed|named|drops|arrows|boats|minecarts|xp|paintings|itemframes|endercrystals|monsters|animals|ambient|mobs|[mobType]> [radius|world]
+    aliases: [killmob]
   renamehome:
     description: Renomear uma home.
     usage: /<command> <nome> <novo nome>
@@ -360,35 +360,35 @@ commands:
     description: Rests you or the given player.
     usage: /<command> [player]
     aliases: [descansar]
-#  rules:
-#    description: Views the server rules.
-#    usage: /<command> [chapter] [page]
+  rules:
+    description: Views the server rules.
+    usage: /<command> [chapter] [page]
   seen:
     description: Shows the last logout time of a player.
     usage: /<command> <playername>
-#  sell:
-#    description: Sells the item currently in your hand.
-#    usage: /<command> <<itemname>|<id>|hand|inventory|blocks> [amount]
+  sell:
+    description: Sells the item currently in your hand.
+    usage: /<command> <<itemname>|<id>|hand|inventory|blocks> [amount]
   sethome:
     description: Set your home to your current location.
     usage: /<command> [nome]
     aliases: [homeset]
-#  setjail:
-#    description: Creates a jail where you specified named [jailname].
-#    usage: /<command> <jailname>
-#  settpr:
-#    description: Set the random teleport location and parameters.
-#    usage: /<command> [center|minrange|maxrange] [value]
+  setjail:
+    description: Creates a jail where you specified named [jailname].
+    usage: /<command> <jailname>
+  settpr:
+    description: Set the random teleport location and parameters.
+    usage: /<command> [center|minrange|maxrange] [value]
   setwarp:
     description: Creates a new warp.
     usage: /<command> <warp>
-#  setworth:
-#    description: Set the sell value of an item.
-#    usage: /<command> [itemname|id] <price>
-#  showkit:
-#    description: Show contents of a kit.
-#    usage: /<command> <kitname>
-#    aliases: [kitshow]
+  setworth:
+    description: Set the sell value of an item.
+    usage: /<command> [itemname|id] <price>
+  showkit:
+    description: Show contents of a kit.
+    usage: /<command> <kitname>
+    aliases: [kitshow]
   editsign:
     description: Edits a sign in the world.
     usage: /<command> <set/clear/copy/paste> [line number] [text]
@@ -401,9 +401,9 @@ commands:
     description: Opens up a smithing table.
     usage: /<command>
     aliases: [ferraria]
-#  socialspy:
-#    description: Toggles if you can see msg/mail commands in chat.
-#    usage: /<command> [player] [on|off]
+  socialspy:
+    description: Toggles if you can see msg/mail commands in chat.
+    usage: /<command> [player] [on|off]
   spawner:
     description: Change the mob type of a spawner.
     usage: /<command> <mob> [delay]
@@ -426,22 +426,22 @@ commands:
   suicide:
     description: Causes you to perish.
     usage: /<command>
-#  tempban:
-#    description: Temporary ban a user.
-#    usage: /<command> <playername> <datediff> [reason]
-#  tempbanip:
-#    description: Temporarily ban an IP Address.
-#    usage: /<command> <playername> <datediff> [reason]
-#  thunder:
-#    description: Enable/disable thunder.
-#    usage: /<command> <true/false> [duration]
+  tempban:
+    description: Temporary ban a user.
+    usage: /<command> <playername> <datediff> [reason]
+  tempbanip:
+    description: Temporarily ban an IP Address.
+    usage: /<command> <playername> <datediff> [reason]
+  thunder:
+    description: Enable/disable thunder.
+    usage: /<command> <true/false> [duration]
   time:
     description: Display/Change the world time. Defaults to current world.
     usage: /<command> [set|add] [day|night|dawn|17:30|4pm|4000ticks] [worldname|all]
     aliases: [day, night, dawn]
-#  togglejail:
-#    description: Jails/Unjails a player, TPs them to the jail specified.
-#    usage: /<command> <player> <jailname> [datediff]
+  togglejail:
+    description: Jails/Unjails a player, TPs them to the jail specified.
+    usage: /<command> <player> <jailname> [datediff]
   top:
     description: Teleport to the highest block at your current position.
     usage: /<command>
@@ -451,9 +451,9 @@ commands:
   tpa:
     description: Request to teleport to the specified player.
     usage: /<command> <player>
-#  tpaall:
-#    description: Requests all players online to teleport to you.
-#    usage: /<command> <player>
+  tpaall:
+    description: Requests all players online to teleport to you.
+    usage: /<command> <player>
   tpaccept:
     description: Accepts teleport requests.
     usage: /<command> [player|*]
@@ -461,12 +461,12 @@ commands:
   tpahere:
     description: Request that the specified player teleport to you.
     usage: /<command> <player>
-#  tpall:
-#    description: Teleport all online players to another player.
-#    usage: /<command> [player]
-#  tpauto:
-#    description: Automatically accept teleportation requests.
-#    usage: /<command> [player]
+  tpall:
+    description: Teleport all online players to another player.
+    usage: /<command> [player]
+  tpauto:
+    description: Automatically accept teleportation requests.
+    usage: /<command> [player]
   tpacancel:
     description: Cancel all outstanding teleport requests. Specify [player] to cancel requests with them.
     usage: /<command> [player]
@@ -486,25 +486,25 @@ commands:
   tppos:
     description: Teleport to coordinates.
     usage: /<command> <x> <y> <z> [yaw] [pitch] [world]
-#  tpr:
-#    description: Teleport randomly.
-#    usage: /<command>
-#    aliases: [rtp, wild]
+  tpr:
+    description: Teleport randomly.
+    usage: /<command>
+    aliases: [rtp, wild]
   tptoggle:
     description: Blocks all forms of teleportation.
     usage: /<command> [player] [on|off]
-#  tree:
-#    description: Spawn a tree where you are looking.
-#    usage: /<command> <tree|birch|redwood|redmushroom|brownmushroom|jungle|junglebush|swamp>
-#  unban:
-#    description: Unbans the specified player.
-#    usage: /<command> <player>
-#  unbanip:
-#    description: Unbans the specified IP address.
-#    usage: /<command> <address>
-#  unlimited:
-#    description: Allows the unlimited placing of items.
-#    usage: /<command> <list|item|clear> [player]
+  tree:
+    description: Spawn a tree where you are looking.
+    usage: /<command> <tree|birch|redwood|redmushroom|brownmushroom|jungle|junglebush|swamp>
+  unban:
+    description: Unbans the specified player.
+    usage: /<command> <player>
+  unbanip:
+    description: Unbans the specified IP address.
+    usage: /<command> <address>
+  unlimited:
+    description: Allows the unlimited placing of items.
+    usage: /<command> <list|item|clear> [player]
   vanish:
     description: Hide yourself from other players.
     usage: /<command> [player] [on|off]
@@ -531,9 +531,9 @@ commands:
     description: Switch between worlds.
     usage: /<command> [world]
     aliases: [tpworld]
-#  worth:
-#    description: Calculates the worth of items in hand or as specified.
-#    usage: /<command> <<itemname>|<id>|hand|inventory|blocks> [-][amount]
+  worth:
+    description: Calculates the worth of items in hand or as specified.
+    usage: /<command> <<itemname>|<id>|hand|inventory|blocks> [-][amount]
 
 permissions:
   essentials.*:
