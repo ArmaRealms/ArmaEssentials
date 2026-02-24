@@ -3,7 +3,7 @@ package com.earth2me.essentials.commands;
 import com.earth2me.essentials.CommandSource;
 import com.earth2me.essentials.Kit;
 import com.earth2me.essentials.User;
-import com.earth2me.essentials.utils.AdventureUtil;
+import com.earth2me.essentials.adventure.AdventureUtil;
 import com.earth2me.essentials.utils.StringUtil;
 import net.ess3.api.TranslatableException;
 import org.bukkit.Server;
@@ -120,7 +120,7 @@ public class Commandkit extends EssentialsCommand {
             }
             return options;
         } else if (args.length == 2 && user.isAuthorized("essentials.kit.others")) {
-            return getPlayers(server, user);
+            return getPlayers(user);
         } else if (args.length == 3 && user.isAuthorized("essentials.kit.others")) {
             final List<String> options = new ArrayList<>();
             options.add("-s");
@@ -136,7 +136,7 @@ public class Commandkit extends EssentialsCommand {
             // TODO: Move this to its own method
             return new ArrayList<>(ess.getKits().getKitKeys());
         } else if (args.length == 2) {
-            return getPlayers(server, sender);
+            return getPlayers(sender);
         } else if (args.length == 3 && sender.isAuthorized("essentials.kit.others.silent")) {
             final List<String> options = new ArrayList<>();
             options.add("-s");
