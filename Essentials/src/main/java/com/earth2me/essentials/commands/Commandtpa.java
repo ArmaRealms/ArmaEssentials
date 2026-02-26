@@ -50,8 +50,8 @@ public class Commandtpa extends EssentialsCommand {
             teleport.teleport(player.getBase(), charge, PlayerTeleportEvent.TeleportCause.COMMAND, future);
             future.thenAccept(success -> {
                 if (success) {
-                    player.sendTl("requestAcceptedAuto", user.getDisplayName());
-                    user.sendTl("requestAcceptedFromAuto", player.getDisplayName());
+                    player.sendTl("requestAcceptedAuto", user.getDisplayName(), user.getName());
+                    user.sendTl("requestAcceptedFromAuto", player.getDisplayName(), player.getName());
                 }
             });
             throw new NoChargeException();
@@ -61,20 +61,20 @@ public class Commandtpa extends EssentialsCommand {
             final TPARequestEvent tpaEvent = new TPARequestEvent(user.getSource(), player, false);
             ess.getServer().getPluginManager().callEvent(tpaEvent);
             if (tpaEvent.isCancelled()) {
-                throw new TranslatableException("teleportRequestCancelled", player.getDisplayName());
+                throw new TranslatableException("teleportRequestCancelled", player.getDisplayName(), player.getName());
             }
             player.requestTeleport(user, false);
-            player.sendTl("teleportRequest", user.getDisplayName());
-            player.sendTl("typeTpaccept");
-            player.sendTl("typeTpdeny");
+            player.sendTl("teleportRequest", user.getDisplayName(), user.getName());
+            player.sendTl("typeTpaccept", user.getDisplayName(), user.getName());
+            player.sendTl("typeTpdeny", user.getDisplayName(), user.getName());
             if (ess.getSettings().getTpaAcceptCancellation() != 0) {
                 player.sendTl("teleportRequestTimeoutInfo", ess.getSettings().getTpaAcceptCancellation());
             }
         }
 
-        user.sendTl("requestSent", player.getDisplayName());
+        user.sendTl("requestSent", player.getDisplayName(), player.getName());
         if (user.isAuthorized("essentials.tpacancel")) {
-            user.sendTl("typeTpacancel");
+            user.sendTl("typeTpacancel", player.getDisplayName(), player.getName());
         }
     }
 

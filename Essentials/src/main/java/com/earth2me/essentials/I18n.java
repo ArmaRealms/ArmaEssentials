@@ -141,10 +141,10 @@ public class I18n implements net.ess3.api.II18n {
             ResourceBundle bundle;
             try {
                 bundle = ResourceBundle.getBundle(MESSAGES, locale, new FileResClassLoader(I18n.class.getClassLoader(), ess), new UTF8PropertiesControl());
-            } catch (MissingResourceException ex) {
+            } catch (final MissingResourceException ex) {
                 try {
                     bundle = ResourceBundle.getBundle(MESSAGES, locale, new UTF8PropertiesControl());
-                } catch (MissingResourceException ex2) {
+                } catch (final MissingResourceException ex2) {
                     bundle = NULL_BUNDLE;
                 }
             }
@@ -190,7 +190,14 @@ public class I18n implements net.ess3.api.II18n {
             return ess.getAdventureFacet().legacyToMini(ess.getAdventureFacet().escapeTags(arg.toString()));
         });
 
-        return messageFormat.format(processedArgs).replace(' ', ' '); // replace nbsp with a space
+        String result = messageFormat.format(processedArgs).replace('\u00A0', ' '); // replace nbsp with a spaceeplace(' ', ' '); // replace nbsp with a space
+
+        // Replace temporary placeholders back to actual values for MiniMessage tags
+        for (int i = 0; i < processedArgs.length; i++) {
+            result = result.replace("{" + i + "}", processedArgs[i].toString());
+        }
+
+        return result;
     }
 
     public static Object[] mutateArgs(final Object[] objects, final Function<Object, String> mutator) {
@@ -312,7 +319,7 @@ public class I18n implements net.ess3.api.II18n {
         }
 
         @Override
-        public Locale getFallbackLocale(String baseName, Locale locale) {
+        public Locale getFallbackLocale(final String baseName, final Locale locale) {
             if (baseName == null || locale == null) {
                 throw new NullPointerException();
             }
