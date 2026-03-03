@@ -42,7 +42,6 @@ class EssentialsSpawnPlayerListener implements Listener {
         }
 
         if (ess.getSettings().getRespawnAtHome()) {
-            final Location home;
 
             Location respawnLocation = null;
             if (ess.getSettings().isRespawnAtBed() &&
@@ -56,10 +55,9 @@ class EssentialsSpawnPlayerListener implements Listener {
                 }
             }
 
+            Location home = null;
             if (respawnLocation != null) {
                 home = respawnLocation;
-            } else {
-                home = user.getHome(user.getLocation());
             }
 
             if (home != null) {
